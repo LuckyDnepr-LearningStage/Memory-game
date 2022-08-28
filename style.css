@@ -76,11 +76,11 @@ body {
     margin: auto;
     gap: 5px;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
 
 .game-card {
-    height: calc(68vh / 3);
+    height: calc(68vh / 4);
     display: flex;
     /* margin: 5px 20%; */
     flex-direction: row;
@@ -90,9 +90,8 @@ body {
     background:radial-gradient( #FFA101, white);
     border: 3px solid black;
     border-radius: 10px;
-    transition: transform 1s;
+    transition: transform .75s;
     transform-style: preserve-3d;
-    
 
 }
 
