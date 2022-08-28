@@ -3,11 +3,11 @@
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* outline: 2px solid green; */
-    
+
 }
 
 body {
-    
+    background-color: #FFEEE4;
     display: flex;
     width: 80%;
     margin: auto;
@@ -43,16 +43,16 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    
+
 }
 
 .nav_item {
     height: 80%;
     width: 100%;
     margin: 5px 10px;
-    border: 2px solid #FFA101;
+    border: 2px solid #692705;
     border-radius: 5px;
-    background: linear-gradient( white, #FAE6B1, white);
+    background: linear-gradient( white, #E5C7BC, white);
     font-size: 1em;
     justify-content: center;
     cursor: pointer;
@@ -72,23 +72,29 @@ body {
 
 .game-field {
     display: grid;
-    width: 60%;
+    width: 40%;
     margin: auto;
     gap: 5px;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .game-card {
-    height: calc(68vh / 4);
+    aspect-ratio: 0.7 / 1;
+    height: calc(68vh / 3);
     display: flex;
     /* margin: 5px 20%; */
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    background:radial-gradient( #FFA101, white);
-    border: 3px solid black;
+    justify-self: center;
+    /*background:radial-gradient( #FFA101, white);*/
+/*     background-image: url("./images/cute-girls-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; */
+    border: 3px solid #692705;
     border-radius: 10px;
     transition: transform .75s;
     transform-style: preserve-3d;
@@ -110,8 +116,8 @@ body {
 }
 
 .card-face-front {
-    height: 100%;
-    color: white;
+    width: 100%;
+    color: #ff5700;
 }
 .card-face-back {
     height: 100%;
@@ -130,5 +136,3 @@ body {
     height: 2em;
     margin-top: auto;
 }
-
-
