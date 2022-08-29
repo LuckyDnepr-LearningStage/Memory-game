@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
+    <script src="intro-menu.js" defer type="text/javascript"></script>
+    <script src="script.js" defer type="text/javascript"></script>
     <link rel="stylesheet" href="style.css">
     <title>Memory pair Game</title>
 </head>
+
 <body>
     <header class="header">
         <h1 class="title">Memory pair Game</h1>
-        <nav class="nav">
-            <ul class="nav_menu">
-                <button class="nav_item">
-                    3 X 2
-                </button>
-                <button class="nav_item">
-                    3 X 4
-                </button>
-                <button class="nav_item">
-                    4 X 4
-                </button>
-            </ul>
-        </nav>
     </header>
     <div class="main">
+        <div class="intro-menu">
+            <div class="sub-menu fieldsize">
+                <label class="sub-menu-item-label" for="field6">
+                    <input type="radio" id="field6" class="sub-menu_item" name="fieldSize" data-fieldcols="2" data-fieldrows="3" checked>
+                    6 cards
+                </label>
+                <label class="sub-menu-item-label" for="field12">
+                    <input type="radio" id="field12" class="sub-menu_item" name="fieldSize" data-fieldcols="4" data-fieldrows="3">
+                    12 cards
+                </label>
+                <label class="sub-menu-item-label" for="field16">
+                    <input type="radio" id="field16" class="sub-menu_item" name="fieldSize" data-fieldcols="4" data-fieldrows="4">
+                    16 cards
+                </label>
+            </div>
+            <div class="sub-menu themes">
+                <div class="sub-menu-themes-inputs">
+                    
+                </div>
+                <div class="sub-menu-themes-image">
+                    <img src="#" alt="" class="face-type-image">
+                </div>
+            </div>
+            <button class="start-game">Start Game</button>
+        </div>
+
         <div class="game-field">
-            <div class="game-card">
-                <p class="card-face card-face-front">My cute dolls</p>
-                <!-- <img src="./images/back.png" alt="" class="card-face card-face-front"> -->
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
+            <!-- <div class="game-card">
                 <img src="./images/back.png" alt="" class="card-face card-face-front">
                 <img src="#" alt="" class="card-face card-face-back">
             </div>
@@ -76,6 +87,10 @@
                 <img src="./images/back.png" alt="" class="card-face card-face-front">
                 <img src="#" alt="" class="card-face card-face-back">
             </div>
+            <div class="game-card">
+                <img src="./images/back.png" alt="" class="card-face card-face-front">
+                <img src="#" alt="" class="card-face card-face-back">
+            </div> -->
 
         </div>
     </div>
@@ -84,4 +99,5 @@
     </footer>
 
 </body>
+
 </html>
