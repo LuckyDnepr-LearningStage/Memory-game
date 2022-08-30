@@ -9,7 +9,7 @@
 body {
     background-color: #FFEEE4;
     display: flex;
-    width: 90%;
+    width: 100%;
     margin: auto;
     flex-direction: column;
     align-content: space-between;
@@ -94,7 +94,7 @@ label{
     margin-right: 0.5rem;
     outline: none;
     position: relative;
-    z-index: 1000;
+    z-index: 500;
   }
   .sub-menu_item:hover {
     background: #ff55005d;
@@ -200,20 +200,14 @@ label{
     height: 100%;
 }
 
-
-
-/* -------------------------- */
 .main {
     width: 100%;
     margin: auto;
     height: auto;
-    /*margin: 10px;*/
-    /*flex: 100%;*/
 }
 
 .game-field {
     display: grid;
-    /* width: 40%; */
     margin: auto;
     gap: 5px;
     grid-template-columns: repeat(4, 1fr);
@@ -224,7 +218,6 @@ label{
     aspect-ratio: 0.7 / 1;
     height: calc(68vh / 3);
     display: flex;
-    /* margin: 5px 20%; */
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
@@ -282,16 +275,63 @@ label{
     box-shadow: 5px 5px 3px #692705;
 }
 
-.hide {
-    display: none;
-}
-
 .footer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 2em;
     margin-top: auto;
+}
+
+.fader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.733);
+    z-index: 1000;
+}
+
+.modal {
+    border: 2px solid #ff5500;
+    border-radius: 15px;
+    background-color: #6926052d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    height: 15em;
+    position: absolute;
+    margin: auto;
+    top: 35%;
+    left: 37.5%;
+    z-index: 1500;
+}
+
+.win-text {
+    margin: 0.5em 0;
+    color: white;
+}
+
+.buttons {
+    color: black;
+    width: 80%;
+    height: 3em;
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    border: 2px solid #692705;
+    border-radius: 10px;
+    background-color: white;
+    transition: all linear 0.2s;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    box-shadow: 5px 5px 3px rgba(255, 255, 255, 0.473);
+    text-shadow: 1px 1px 2px grey;
+}
+
+.hide {
+    display: none;
 }
 
 @media only screen and (max-width: 400px) {

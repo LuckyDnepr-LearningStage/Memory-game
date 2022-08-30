@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="intro-menu.js" defer type="text/javascript"></script>
+    <script src="menu.js" defer type="text/javascript"></script>
     <script src="script.js" defer type="text/javascript"></script>
     <link rel="stylesheet" href="style.css">
     <title>Memory pair Game</title>
 </head>
 
 <body>
+    <div class="fader hide">
+
+    </div>
     <header class="header">
         <h1 class="title">Memory pair Game</h1>
     </header>
     <div class="main">
-        <div class="intro-menu">
+        <div class="intro-menu hide">
             <div class="sub-menu fieldsize">
                 <label class="sub-menu-item-label" for="field6">
                     <input type="radio" id="field6" class="sub-menu_item" name="fieldSize" data-fieldcols="2" data-fieldrows="3" checked>
@@ -43,55 +46,15 @@
         </div>
 
         <div class="game-field">
-            <!-- <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div>
-            <div class="game-card">
-                <img src="./images/back.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
-            </div> -->
-
+        </div>
+        <div class="modal hide">
+            <h1 class="win-text">You win!</h1>
+            <button class="buttons" id="replay">
+                Replay
+            </button>
+            <button class="buttons" id="back-to-menu">
+                Back to menu...
+            </button>
         </div>
     </div>
     <footer class="footer">

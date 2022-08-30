@@ -1,131 +1,111 @@
-//import { makeIntroMenu } from "./intro-menu.js";
-
 const doc = document;
 
-var themesDataPath = "/themesData.json";
-var field = doc.querySelector(".game-field");
+const themesDataPath = "/themesData.json";
 
-var themesData,
-    themeIndex,
-    fieldsAmount,
+let themesData,
+    themeIndex = 0,
+    fieldSize = 6,
     cardsSet,
     openedCards = [],
-    findedPairs = 0;
+    findedPairs;
 
-makeIntroMenu(themesDataPath);
+doc.querySelector(".game-field").addEventListener("click", (e) => cardFlip(e.target));
+
+makeMenuAndListeners (themesDataPath);
 
 function gameStart() {
+    renderGameField(fieldSize);
+    generateCardsSet(fieldSize, themesData[themeIndex].pictures.length - 1);
+    findedPairs = 0;
+    switchMenuAndGameField();
+}
 
-    /* for (let i = 0; i < 30; i++) {
-        console.log(makeSetOfPairs(fieldsAmount, themesData[themeIndex].pictures.length));
-    } */
-    renderGameField(fieldsAmount);
-    cardsSet = makeSetOfPairs(fieldsAmount, themesData[themeIndex].pictures.length);
-    console.log(cardsSet);
-    addCardsNumbers();
-
-
-    function renderGameField(cardsQuantity) {
-        const gameField = doc.querySelector(".game-field");
-        let gameFieldHTML = "";
-        for (let i = 1; i <= cardsQuantity; i++) {
-            gameFieldHTML += `
-            <div class="game-card">
+function renderGameField(fieldSize) {
+    doc.querySelector(".game-field").innerHTML = new Array(fieldSize)
+        .fill(0)
+        .map(
+            (newCard, i) => `
+            <div class="game-card" data-card_id="${i}">
                 <img src="./images/bg-hearts.png" alt="" class="card-face card-face-front">
                 <img src="#" alt="" class="card-face card-face-back">
             </div>
-            `;
-        }
-        gameField.innerHTML = gameFieldHTML;
-    }
-
-    field.addEventListener('click', (e) => {
-        if (e.target.classList.contains("card-face") && !e.target.parentNode.classList.contains("flipped")) {
-            e.target.parentNode.classList.add("flipped");
-            assingBackImage(e.target.parentNode);
-            openedCards.push(e.target.parentNode);
-            flipCardHandler();
-            /* 
-            const cardFlip = new CustomEvent("cardFlip", {
-                detail: e.target.parentNode.dataset.card_id
-            });
-            field.dispatchEvent(cardFlip); */
-        }
-    });
-
-    function flipCardHandler () {
-        if (openedCards.length % 2 === 0) {
-            const firstCard = openedCards.at(-2),
-                secondCard = openedCards.at(-1);
-            openedCards = [];
-            if (cardsSet[firstCard.dataset.card_id] !== cardsSet[secondCard.dataset.card_id]) {
-                setTimeout(() => {
-                    firstCard.classList.remove("flipped");
-                    secondCard.classList.remove("flipped");
-                    setTimeout(() => {
-                        firstCard.querySelector(".card-face-back").src = "#";
-                        secondCard.querySelector(".card-face-back").src = "#";
-                    }, 500);
-                }, 1000);
-            } else {
-                firstCard.classList.add("pair");
-                secondCard.classList.add("pair");
-                findedPairs++;
-            }
-        }
-        isWin ();
-    }
-
-    function isWin () {
-        if (findedPairs === cardsSet.length / 2) {
-            restartGame();
-        }
-    }
-
-
-    function restartGame () {
-        setTimeout (() => {
-                alert("You win!");
-            findedPairs = 0;
-            cardsSet = makeSetOfPairs(fieldsAmount, themesData[themeIndex].pictures.length);
-            document.querySelectorAll(".game-card").forEach((card) => {
-                card.classList.remove("flipped");
-                card.classList.remove("pair");
-            });
-            }, 1000);
-    }
-
-    function addCardsNumbers() {
-        doc.querySelectorAll(".game-card").forEach((card, i) => {
-            card.setAttribute("data-card_id", i);
-        });
-    }
-
-    function assingBackImage(card) {
-        const backFace = card.querySelector(".card-face-back");
-        backFace.src = themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
-    }
-
-    function makeSetOfPairs(sizeOfSet, highestNumber) {
-        let firstHalfOfSet = [];
-        for (let i = 0; i < sizeOfSet / 2; i++) {
-            const random = Math.floor(Math.random() * (highestNumber - 1));
-            if (!firstHalfOfSet.includes(random)) {
-                firstHalfOfSet.push(random);
-            } else {
-                i--;
-            }
-        }
-        let secondHalfOfSet = new Array(firstHalfOfSet.length).fill(-1);
-        for (let i = 0; i < firstHalfOfSet.length; i++) {
-            const random = Math.floor(Math.random() * (firstHalfOfSet.length));
-            if (!secondHalfOfSet.includes(firstHalfOfSet[i]) && secondHalfOfSet[random] == -1) {
-                secondHalfOfSet[random] = firstHalfOfSet[i];
-            } else {
-                i--;
-            }
-        }
-        return [...firstHalfOfSet,...secondHalfOfSet];
-    }
-
+        `
+        )
+        .join("");
 }
+
+function cardFlip (cardFace) {
+    if (cardFace.classList.contains("card-face")) {
+        const card = cardFace.parentNode;
+        if (!card.classList.contains("flipped")) {
+            card.classList.add("flipped");
+            openedCards.push(card);
+            card.querySelector(".card-face-back").src =
+                themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
+            flipCardHandler();
+        }
+    }
+}
+
+function flipCardHandler() {
+    if (openedCards.length % 2 === 0) {
+        const firstCard = openedCards.at(-2),
+            secondCard = openedCards.at(-1);
+        openedCards = [];
+        if (
+            cardsSet[firstCard.dataset.card_id] !==
+            cardsSet[secondCard.dataset.card_id]
+        ) {
+            setTimeout(() => {
+                firstCard.classList.remove("flipped");
+                secondCard.classList.remove("flipped");
+                setTimeout(() => {
+                    firstCard.querySelector(".card-face-back").src = "#";
+                    secondCard.querySelector(".card-face-back").src = "#";
+                }, 500);
+            }, 1000);
+        } else {
+            firstCard.classList.add("pair");
+            secondCard.classList.add("pair");
+            findedPairs++;
+        }
+    }
+    if (findedPairs === cardsSet.length / 2) {
+        winGame();
+    }
+}
+
+function winGame() {
+    setTimeout(() => {
+        showWinWindow ("show");
+    }, 1000);
+}
+
+function resetCardsStage () {
+        document.querySelectorAll(".game-card").forEach((card) => {
+            card.classList.remove("flipped");
+            card.classList.remove("pair");
+        });
+}
+
+function generateCardsSet(sizeOfSet, highestNumber) {
+    let mixedSetOfPairs = [],
+        setOfPairs = [];
+    for (let i = 0; i < sizeOfSet / 2; i++) {
+        const randomNumber = Math.floor(Math.random() * highestNumber);
+        if (!setOfPairs.includes(randomNumber)) {
+            setOfPairs.push(randomNumber, randomNumber);
+        } else {
+            i--;
+        }
+    }
+    while (setOfPairs.length >= 1) {
+        const index = Math.floor(Math.random() * (setOfPairs.length - 1));
+        mixedSetOfPairs.push(setOfPairs[index]);
+        setOfPairs.splice(index, 1);
+    }
+    console.log(mixedSetOfPairs);
+    cardsSet = mixedSetOfPairs;
+}
+
+
