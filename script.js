@@ -101,11 +101,13 @@ function generateCardsSet(sizeOfSet, highestNumber) {
     }
     while (setOfPairs.length >= 1) {
         const index = Math.floor(Math.random() * (setOfPairs.length - 1));
-        mixedSetOfPairs.push(setOfPairs[index]);
+        if (Math.random() < 0.5) {
+            mixedSetOfPairs.push(setOfPairs[index]);
+         } else {
+            mixedSetOfPairs.unshift(setOfPairs[index]);
+         }
         setOfPairs.splice(index, 1);
     }
     console.log(mixedSetOfPairs);
     cardsSet = mixedSetOfPairs;
 }
-
-

@@ -1,66 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="menu.js" defer type="text/javascript"></script>
+        <script src="script.js" defer type="text/javascript"></script>
+        <link rel="stylesheet" href="style.css" />
+        <title>Memory pair Game</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="menu.js" defer type="text/javascript"></script>
-    <script src="script.js" defer type="text/javascript"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Memory pair Game</title>
-</head>
-
-<body>
-    <div class="fader hide">
-
-    </div>
-    <header class="header">
-        <h1 class="title">Memory pair Game</h1>
-    </header>
-    <div class="main">
-        <div class="intro-menu hide">
-            <div class="sub-menu fieldsize">
-                <label class="sub-menu-item-label" for="field6">
-                    <input type="radio" id="field6" class="sub-menu_item" name="fieldSize" data-fieldcols="2" data-fieldrows="3" checked>
-                    6 cards
-                </label>
-                <label class="sub-menu-item-label" for="field12">
-                    <input type="radio" id="field12" class="sub-menu_item" name="fieldSize" data-fieldcols="4" data-fieldrows="3">
-                    12 cards
-                </label>
-                <label class="sub-menu-item-label" for="field16">
-                    <input type="radio" id="field16" class="sub-menu_item" name="fieldSize" data-fieldcols="4" data-fieldrows="4">
-                    16 cards
-                </label>
-            </div>
-            <div class="sub-menu themes">
-                <div class="sub-menu-themes-inputs">
-                    
+    <body>
+        <div class="fader hide"></div>
+        <div class="wrapper">
+            <header class="header">
+                <h1 class="title">Memory pair Game</h1>
+            </header>
+            <div class="main">
+                <div class="intro-menu hide">
+                    <div class="sub-menu fieldsize">
+                        <label class="sub-menu-item-label" for="field6">
+                            <input
+                                type="radio"
+                                id="field6"
+                                class="sub-menu_item"
+                                name="fieldSize"
+                                data-fieldcols="2"
+                                data-fieldrows="3"
+                                checked
+                            />
+                            6 cards
+                        </label>
+                        <label class="sub-menu-item-label" for="field12">
+                            <input
+                                type="radio"
+                                id="field12"
+                                class="sub-menu_item"
+                                name="fieldSize"
+                                data-fieldcols="4"
+                                data-fieldrows="3"
+                            />
+                            12 cards
+                        </label>
+                        <label class="sub-menu-item-label" for="field16">
+                            <input
+                                type="radio"
+                                id="field16"
+                                class="sub-menu_item"
+                                name="fieldSize"
+                                data-fieldcols="4"
+                                data-fieldrows="4"
+                            />
+                            16 cards
+                        </label>
+                    </div>
+                    <div class="sub-menu themes">
+                        <div class="sub-menu-themes-inputs"></div>
+                        <div class="sub-menu-themes-image">
+                            <img src="#" alt="" class="face-type-image" />
+                        </div>
+                    </div>
+                    <button class="start-game">Start Game</button>
                 </div>
-                <div class="sub-menu-themes-image">
-                    <img src="#" alt="" class="face-type-image">
+
+                <div class="game-field"></div>
+                <div class="modal hide">
+                    <h1 class="win-text">You win!</h1>
+                    <button class="buttons" id="replay">Replay</button>
+                    <button class="buttons" id="back-to-menu">
+                        Back to menu...
+                    </button>
                 </div>
             </div>
-            <button class="start-game">Start Game</button>
+            <footer class="footer">
+                <p>Created by LuckyDnepr</p>
+            </footer>
         </div>
-
-        <div class="game-field">
-        </div>
-        <div class="modal hide">
-            <h1 class="win-text">You win!</h1>
-            <button class="buttons" id="replay">
-                Replay
-            </button>
-            <button class="buttons" id="back-to-menu">
-                Back to menu...
-            </button>
-        </div>
-    </div>
-    <footer class="footer">
-        Footer
-    </footer>
-
-</body>
-
+    </body>
 </html>
