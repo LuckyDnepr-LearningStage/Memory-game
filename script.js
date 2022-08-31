@@ -21,7 +21,18 @@ function gameStart() {
 }
 
 function renderGameField(fieldSize) {
-    doc.querySelector(".game-field").innerHTML = new Array(fieldSize)
+    const gameField = doc.querySelector(".game-field");
+    switch (fieldSize) {
+        case 6:
+            gameField.setAttribute("style", "--cols: 3; --rows: 2");
+            break;
+        case 12:
+            gameField.setAttribute("style", "--cols: 4; --rows: 3");
+            break;
+        default:
+            break;
+    }
+    gameField.innerHTML = new Array(fieldSize)
         .fill(0)
         .map(
             (newCard, i) => `

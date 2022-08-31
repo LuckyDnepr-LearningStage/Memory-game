@@ -23,7 +23,7 @@ function renderMenu(data) {
         .map((item, i) => {
             const checked = i === 0 ? " checked" : "";
             return ` <label class="sub-menu-item-label" for="group-${i}">
-            <input type="radio" id="group-${i}" class="sub-menu_item" name="face-type" data-theme="${i}"${checked}> 
+            <input type="radio" id="group-${i}" class="sub-menu_item" name="face-type" data-theme="${i}"${checked}>
             ${themesData[i].theme}
             </label>
         `;
@@ -79,6 +79,7 @@ function themeChange(themeNumber) {
 function switchMenuAndGameField() {
     doc.querySelector(".game-field").classList.toggle("hide");
     doc.querySelector(".intro-menu").classList.toggle("hide");
+    doc.querySelector(".header").classList.toggle("hide");
 }
 
 function showWinWindow() {

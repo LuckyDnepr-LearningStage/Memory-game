@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* outline: 2px solid green; */
+}
+
+body {
+    background-color: #ffeee4;
+    /* overflow: hidden; */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    height: 100vh;
+    border: 1px solid green;
+ }
+.header {
+    height: 3em;
+ }
+.hide { }
+.title { }
+.main {
+    width: 100%;
+    height: calc(100% - 5em);
+ }
+.nav {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 20% auto 10%;
+    grid-template-areas:
+    "fieldsize fieldsize"
+    "themes themeImage"
+    "startbtn startbtn";
+ }
+.nav_menu {
+    display: flex;
+ }
+.fieldsize {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    grid-area: fieldsize;
+}
+.themes {
+    flex-direction: column;
+    grid-area: themes;
+    justify-content: center;
+    align-items: center;
+ }
+.nav_menu_item_label { }
+.nav_menu_item { }
+
+.nav_menu_themes_item_label { }
+.theme_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50%;
+    min-height: 100%;
+    grid-area: themeImage;
+}
+
+.theme_image_img {
+    height: 100%;
+    width: auto;
+}
+
+.start-game {
+    grid-area: startbtn;
+ }
+.footer {
+    height: 2em;
+ }
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, T */
+
+@media only screen and (max-width: 480px) {
+
+}
+
+@media only screen and (min-width: 481px) {
+
+}
+
+@media only screen and (min-width: 769px) {
+
+}
+
+@media only screen and (min-width: 1025px) {
+
+}
+
+@media only screen and (min-width: 1201px) {
+
+}
