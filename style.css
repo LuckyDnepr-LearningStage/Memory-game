@@ -293,6 +293,7 @@ body {
     }
     .nav_menu label {
         padding: 15px 5px;
+        font-size: 10px;
     }
     .game_field {
         width: auto;
@@ -313,6 +314,7 @@ body {
     .nav_menu label {
         padding: 30px 5px;
         font-size: x-large;
+        font-size: 16px;
     }
     .start-game {
         padding: 30px 5px;
@@ -332,6 +334,9 @@ body {
     }
     .main {
         height: 100%;
+    }
+    .nav_menu label {
+        font-size: 10px;
     }
     .nav {
         grid-template-rows: 25% auto 20%;
