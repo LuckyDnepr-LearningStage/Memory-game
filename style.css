@@ -39,8 +39,6 @@ body {
     justify-content: center;
 }
 
-
-
 .title {
     text-shadow: 3px 3px 5px steelblue;
 }
@@ -85,8 +83,6 @@ body {
     align-items: center;
 }
 
-/* .nav_menu_item_label {} */
-
 .nav_menu input[type="radio"] {
     appearance: none;
     position: fixed;
@@ -104,7 +100,7 @@ body {
     text-align: center;
     border-radius: 5px 20px 5px 20px;
     cursor: pointer;
-    transition: all linear .2s;
+    transition: all linear 0.2s;
 }
 
 .nav_menu label:hover {
@@ -157,7 +153,7 @@ body {
     font-weight: bolder;
     border-color: steelblue;
     text-shadow: 3px 3px 3px papayawhip;
-    transition: all linear .2s;
+    transition: all linear 0.2s;
     cursor: pointer;
     grid-area: startbtn;
 }
@@ -240,7 +236,6 @@ body {
     box-shadow: 5px 5px 5px #ff5700, -5px -5px 5px #ff5700;
 }
 
-
 .modal {
     border: 2px solid #ff5500;
     border-radius: 15px;
@@ -279,7 +274,6 @@ body {
     box-shadow: 5px 5px 3px rgba(255, 255, 255, 0.473);
     text-shadow: 1px 1px 2px grey;
 }
-
 
 .hide {
     display: none;
@@ -339,10 +333,10 @@ body {
     .nav {
         grid-template-rows: 25% auto 20%;
         grid-template-columns: 2fr 4fr 2fr;
-        grid-template-areas: 
-        "fieldsize themeImage themes"
-        "fieldsize themeImage themes"
-        "startbtn startbtn startbtn";
+        grid-template-areas:
+            "fieldsize themeImage themes"
+            "fieldsize themeImage themes"
+            "startbtn startbtn startbtn";
     }
     .fieldsize {
         flex-direction: column;
@@ -355,7 +349,7 @@ body {
         width: 60%;
     }
     .theme_image {
-        margin: .2em;
+        margin: 0.2em;
     }
     .nav_menu {
         margin: 0.2em;
@@ -364,7 +358,7 @@ body {
         margin: 0.2em;
     }
     .start-game {
-        margin: .2em;
+        margin: 0.2em;
     }
     .game_field {
         width: auto;
@@ -381,22 +375,3 @@ body {
         top: 20%;
     }
 }
-
-/* @media only (screen) and (min-width: 1025px) and (orientation: landscape) {
-    .wrapper {
-        width: 95%;
-    }
-    .main {
-        height: 100%;
-    }
-    
-    .game_field {
-        grid-template-columns: repeat(var(--cols), calc(90vh / var(--cols)));
-        grid-template-rows: repeat(var(--rows), 1fr);
-    }
-} */
-/* 
-@media only screen and (min-width: 1025px) {}
-
-@media only screen and (min-width: 1201px) {}
- */

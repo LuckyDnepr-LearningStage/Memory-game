@@ -1,4 +1,4 @@
-async function makeMenuAndListeners () {
+async function makeMenuAndListeners() {
     switchMenuAndGameField();
     await readThemes(themesDataPath);
     renderMenu(themesData);
@@ -15,21 +15,19 @@ async function readThemes(path) {
 }
 
 function renderMenu(data) {
-    doc.querySelector(".themes").innerHTML = new Array(
-        themesData.length
-    )
+    doc.querySelector(".themes").innerHTML = new Array(themesData.length)
         .fill(0)
         .map((item, i) => {
             const checked = i === 0 ? " checked" : "";
-            return `<input 
-            type="radio" 
-            id="theme-${i}" 
-            class="nav_menu_item" 
-            name="theme" 
+            return `<input
+            type="radio"
+            id="theme-${i}"
+            class="nav_menu_item"
+            name="theme"
             data-theme="${i}"
             ${checked}/>
-            <label 
-            class="nav_menu_item_label" 
+            <label
+            class="nav_menu_item_label"
             for="theme-${i}">
             ${themesData[i].theme}
             </label>
@@ -49,14 +47,11 @@ function addMenuItemsEventListeners() {
                 )
             )
     );
-    doc.querySelectorAll('input[type=radio][name="theme"]').forEach(
-        (radio) =>
-            radio.addEventListener("change", (e) =>
-                {
-                    themeIndex = e.target.dataset.theme;
-                    themeChange();
-                }
-            )
+    doc.querySelectorAll('input[type=radio][name="theme"]').forEach((radio) =>
+        radio.addEventListener("change", (e) => {
+            themeIndex = e.target.dataset.theme;
+            themeChange();
+        })
     );
     doc.querySelector(".start-game").addEventListener("click", () => {
         gameStart();
@@ -65,9 +60,8 @@ function addMenuItemsEventListeners() {
         hideWinWindow();
         findedPairs = 0;
         resetCardsStage();
-        generateCardsSet(fieldSize, themesData[themeIndex].pictures.length - 1);
-        }
-    );
+        generateCardsSet(numberOfCards, themesData[themeIndex].pictures.length - 1);
+    });
     doc.querySelector("#back_to_menu").addEventListener("click", () => {
         hideWinWindow();
         switchMenuAndGameField();
@@ -75,7 +69,7 @@ function addMenuItemsEventListeners() {
 }
 
 function fieldSizeChange(fieldWidth, fieldHeight) {
-    fieldSize = fieldWidth * fieldHeight;
+    numberOfCards = fieldWidth * fieldHeight;
 }
 
 function themeChange() {
@@ -97,7 +91,7 @@ function showWinWindow() {
     doc.querySelector(".modal").classList.remove("hide");
 }
 
-function hideWinWindow () {
+function hideWinWindow() {
     doc.querySelector(".fader").classList.add("hide");
     doc.querySelector(".modal").classList.add("hide");
 }

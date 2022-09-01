@@ -4,7 +4,7 @@ const themesDataPath = "./themesData.json";
 
 let themesData,
     themeIndex = 0,
-    fieldSize = 6,
+    numberOfCards = 6,
     cardsSet,
     openedCards = [],
     findedPairs;
@@ -14,15 +14,15 @@ doc.querySelector(".game_field").addEventListener("click", (e) => cardFlip(e.tar
 makeMenuAndListeners (themesDataPath);
 
 function gameStart() {
-    renderGameField(fieldSize);
-    generateCardsSet(fieldSize, themesData[themeIndex].pictures.length - 1);
+    renderGameField(numberOfCards);
+    generateCardsSet(numberOfCards, themesData[themeIndex].pictures.length - 1);
     findedPairs = 0;
     switchMenuAndGameField();
 }
 
-function renderGameField(fieldSize) {
+function renderGameField(numberOfCards) {
     const gameField = doc.querySelector(".game_field");
-    switch (fieldSize) {
+    switch (numberOfCards) {
         case 6:
             gameField.setAttribute("style", "--cols: 3; --rows: 2");
             break;
@@ -32,7 +32,7 @@ function renderGameField(fieldSize) {
         default:
             break;
     }
-    gameField.innerHTML = new Array(fieldSize)
+    gameField.innerHTML = new Array(numberOfCards)
         .fill(0)
         .map(
             (newCard, i) => `
