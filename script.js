@@ -9,7 +9,7 @@ let themesData,
     openedCards = [],
     findedPairs;
 
-doc.querySelector(".game-field").addEventListener("click", (e) => cardFlip(e.target));
+doc.querySelector(".game_field").addEventListener("click", (e) => cardFlip(e.target));
 
 makeMenuAndListeners (themesDataPath);
 
@@ -21,7 +21,7 @@ function gameStart() {
 }
 
 function renderGameField(fieldSize) {
-    const gameField = doc.querySelector(".game-field");
+    const gameField = doc.querySelector(".game_field");
     switch (fieldSize) {
         case 6:
             gameField.setAttribute("style", "--cols: 3; --rows: 2");
@@ -36,9 +36,9 @@ function renderGameField(fieldSize) {
         .fill(0)
         .map(
             (newCard, i) => `
-            <div class="game-card" data-card_id="${i}">
-                <img src="./images/bg-hearts.png" alt="" class="card-face card-face-front">
-                <img src="#" alt="" class="card-face card-face-back">
+            <div class="game_card" data-card_id="${i}">
+                <img src="./images/bg-hearts.png" alt="" class="card_face card_face_front">
+                <img src="#" alt="" class="card_face card_face_back">
             </div>
         `
         )
@@ -46,12 +46,12 @@ function renderGameField(fieldSize) {
 }
 
 function cardFlip (cardFace) {
-    if (cardFace.classList.contains("card-face")) {
+    if (cardFace.classList.contains("card_face")) {
         const card = cardFace.parentNode;
         if (!card.classList.contains("flipped")) {
             card.classList.add("flipped");
             openedCards.push(card);
-            card.querySelector(".card-face-back").src =
+            card.querySelector(".card_face_back").src =
                 themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
             flipCardHandler();
         }
@@ -71,8 +71,8 @@ function flipCardHandler() {
                 firstCard.classList.remove("flipped");
                 secondCard.classList.remove("flipped");
                 setTimeout(() => {
-                    firstCard.querySelector(".card-face-back").src = "#";
-                    secondCard.querySelector(".card-face-back").src = "#";
+                    firstCard.querySelector(".card_face_back").src = "#";
+                    secondCard.querySelector(".card_face_back").src = "#";
                 }, 500);
             }, 1000);
         } else {
@@ -93,7 +93,7 @@ function winGame() {
 }
 
 function resetCardsStage () {
-        document.querySelectorAll(".game-card").forEach((card) => {
+        document.querySelectorAll(".game_card").forEach((card) => {
             card.classList.remove("flipped");
             card.classList.remove("pair");
         });

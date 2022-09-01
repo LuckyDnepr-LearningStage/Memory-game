@@ -9,31 +9,38 @@ async function readThemes(path) {
     try {
         const response = await fetch(path);
         themesData = await response.json();
-        //return json;
     } catch (error) {
         console.log(error);
     }
 }
 
 function renderMenu(data) {
-    doc.querySelector(".sub-menu-themes-inputs").innerHTML = new Array(
+    doc.querySelector(".themes").innerHTML = new Array(
         themesData.length
     )
         .fill(0)
         .map((item, i) => {
             const checked = i === 0 ? " checked" : "";
-            return ` <label class="sub-menu-item-label" for="group-${i}">
-            <input type="radio" id="group-${i}" class="sub-menu_item" name="face-type" data-theme="${i}"${checked}>
+            return `<input 
+            type="radio" 
+            id="theme-${i}" 
+            class="nav_menu_item" 
+            name="theme" 
+            data-theme="${i}"
+            ${checked}/>
+            <label 
+            class="nav_menu_item_label" 
+            for="theme-${i}">
             ${themesData[i].theme}
             </label>
         `;
         })
         .join("");
-    doc.querySelector(".face-type-image").src = themesData[0].pictures[0];
+    doc.querySelector(".theme_image_img").src = themesData[0].pictures[0];
 }
 
 function addMenuItemsEventListeners() {
-    doc.querySelectorAll('input[type=radio][name="fieldSize"]').forEach(
+    doc.querySelectorAll('input[type=radio][name="field_size"]').forEach(
         (radio) =>
             radio.addEventListener("change", (e) =>
                 fieldSizeChange(
@@ -42,10 +49,13 @@ function addMenuItemsEventListeners() {
                 )
             )
     );
-    doc.querySelectorAll('input[type=radio][name="face-type"]').forEach(
+    doc.querySelectorAll('input[type=radio][name="theme"]').forEach(
         (radio) =>
             radio.addEventListener("change", (e) =>
-                themeChange(e.target.dataset.theme)
+                {
+                    themeIndex = e.target.dataset.theme;
+                    themeChange();
+                }
             )
     );
     doc.querySelector(".start-game").addEventListener("click", () => {
@@ -58,7 +68,7 @@ function addMenuItemsEventListeners() {
         generateCardsSet(fieldSize, themesData[themeIndex].pictures.length - 1);
         }
     );
-    doc.querySelector("#back-to-menu").addEventListener("click", () => {
+    doc.querySelector("#back_to_menu").addEventListener("click", () => {
         hideWinWindow();
         switchMenuAndGameField();
     });
@@ -68,18 +78,18 @@ function fieldSizeChange(fieldWidth, fieldHeight) {
     fieldSize = fieldWidth * fieldHeight;
 }
 
-function themeChange(themeNumber) {
-    themeIndex = themeNumber;
-    doc.querySelector(".face-type-image").src =
+function themeChange() {
+    doc.querySelector(".theme_image_img").src =
         themesData[themeIndex].pictures[
             Math.floor(Math.random() * themesData[themeIndex].pictures.length)
         ];
 }
 
 function switchMenuAndGameField() {
-    doc.querySelector(".game-field").classList.toggle("hide");
-    doc.querySelector(".intro-menu").classList.toggle("hide");
+    doc.querySelector(".game_field").classList.toggle("hide");
+    doc.querySelector(".nav").classList.toggle("hide");
     doc.querySelector(".header").classList.toggle("hide");
+    doc.querySelector(".footer").classList.toggle("hide");
 }
 
 function showWinWindow() {
