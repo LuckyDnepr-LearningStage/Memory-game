@@ -1,0 +1,103 @@
+async function makeMenuAndListeners () {
+    switchMenuAndGameField();
+    await readThemes(themesDataPath);
+    renderMenu(themesData);
+    addMenuItemsEventListeners();
+}
+
+async function readThemes(path) {
+    try {
+        const response = await fetch(path);
+        themesData = await response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function renderMenu(data) {
+    doc.querySelector(".themes").innerHTML = new Array(
+        themesData.length
+    )
+        .fill(0)
+        .map((item, i) => {
+            const checked = i === 0 ? " checked" : "";
+            return `<input 
+            type="radio" 
+            id="theme-${i}" 
+            class="nav_menu_item" 
+            name="theme" 
+            data-theme="${i}"
+            ${checked}/>
+            <label 
+            class="nav_menu_item_label" 
+            for="theme-${i}">
+            ${themesData[i].theme}
+            </label>
+        `;
+        })
+        .join("");
+    doc.querySelector(".theme_image_img").src = themesData[0].pictures[0];
+}
+
+function addMenuItemsEventListeners() {
+    doc.querySelectorAll('input[type=radio][name="field_size"]').forEach(
+        (radio) =>
+            radio.addEventListener("change", (e) =>
+                fieldSizeChange(
+                    e.target.dataset.fieldcols,
+                    e.target.dataset.fieldrows
+                )
+            )
+    );
+    doc.querySelectorAll('input[type=radio][name="theme"]').forEach(
+        (radio) =>
+            radio.addEventListener("change", (e) =>
+                {
+                    themeIndex = e.target.dataset.theme;
+                    themeChange();
+                }
+            )
+    );
+    doc.querySelector(".start-game").addEventListener("click", () => {
+        gameStart();
+    });
+    doc.querySelector("#replay").addEventListener("click", () => {
+        hideWinWindow();
+        findedPairs = 0;
+        resetCardsStage();
+        generateCardsSet(fieldSize, themesData[themeIndex].pictures.length - 1);
+        }
+    );
+    doc.querySelector("#back_to_menu").addEventListener("click", () => {
+        hideWinWindow();
+        switchMenuAndGameField();
+    });
+}
+
+function fieldSizeChange(fieldWidth, fieldHeight) {
+    fieldSize = fieldWidth * fieldHeight;
+}
+
+function themeChange() {
+    doc.querySelector(".theme_image_img").src =
+        themesData[themeIndex].pictures[
+            Math.floor(Math.random() * themesData[themeIndex].pictures.length)
+        ];
+}
+
+function switchMenuAndGameField() {
+    doc.querySelector(".game_field").classList.toggle("hide");
+    doc.querySelector(".nav").classList.toggle("hide");
+    doc.querySelector(".header").classList.toggle("hide");
+    doc.querySelector(".footer").classList.toggle("hide");
+}
+
+function showWinWindow() {
+    doc.querySelector(".fader").classList.remove("hide");
+    doc.querySelector(".modal").classList.remove("hide");
+}
+
+function hideWinWindow () {
+    doc.querySelector(".fader").classList.add("hide");
+    doc.querySelector(".modal").classList.add("hide");
+}
