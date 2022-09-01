@@ -1,6 +1,6 @@
 const doc = document;
 
-const themesDataPath = "/themesData.json";
+const themesDataPath = "./themesData.json";
 
 let themesData,
     themeIndex = 0,
