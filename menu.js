@@ -84,9 +84,11 @@ function switchMenuAndGameField() {
     doc.querySelector(".nav").classList.toggle("hide");
     doc.querySelector(".header").classList.toggle("hide");
     doc.querySelector(".footer").classList.toggle("hide");
+
 }
 
 function showWinWindow() {
+    showCoauthorLink();
     doc.querySelector(".fader").classList.remove("hide");
     doc.querySelector(".modal").classList.remove("hide");
 }
@@ -94,4 +96,11 @@ function showWinWindow() {
 function hideWinWindow() {
     doc.querySelector(".fader").classList.add("hide");
     doc.querySelector(".modal").classList.add("hide");
+    showCoauthorLink();
+}
+
+function showCoauthorLink () {
+    if (themeIndex != "0") {
+        doc.querySelector(".coauthorlink").classList.toggle("hide");
+    }
 }

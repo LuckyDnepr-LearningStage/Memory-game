@@ -275,6 +275,19 @@ body {
     text-shadow: 1px 1px 2px grey;
 }
 
+.coauthorlink {
+    font-size: smaller;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px red;
+}
+
+.coauthorlink:hover:before {
+    content: "View ";
+    position: relative;
+}
+
 .hide {
     display: none;
 }

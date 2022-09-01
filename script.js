@@ -9,9 +9,11 @@ let themesData,
     openedCards = [],
     findedPairs;
 
-doc.querySelector(".game_field").addEventListener("click", (e) => cardFlip(e.target));
+doc.querySelector(".game_field").addEventListener("click", (e) =>
+    isClickOnCard(e.target)
+);
 
-makeMenuAndListeners (themesDataPath);
+makeMenuAndListeners(themesDataPath);
 
 function gameStart() {
     renderGameField(numberOfCards);
@@ -45,58 +47,69 @@ function renderGameField(numberOfCards) {
         .join("");
 }
 
-function cardFlip (cardFace) {
-    if (cardFace.classList.contains("card_face")) {
-        const card = cardFace.parentNode;
-        if (!card.classList.contains("flipped")) {
-            card.classList.add("flipped");
-            openedCards.push(card);
-            card.querySelector(".card_face_back").src =
-                themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
-            flipCardHandler();
-        }
+function isClickOnCard(target) {
+    if (target.classList.contains("card_face")) {
+        cardFlip(target.parentNode);
     }
 }
 
-function flipCardHandler() {
+function cardFlip(card) {
+    if (!card.classList.contains("flipped")) {
+        card.classList.add("flipped");
+        openedCards.push(card);
+        card.querySelector(".card_face_back").src =
+            themesData[themeIndex].pictures[cardsSet[+card.dataset.card_id]];
+        checkPair();
+    }
+}
+
+function checkPair() {
     if (openedCards.length % 2 === 0) {
-        const firstCard = openedCards.at(-2),
-            secondCard = openedCards.at(-1);
+        const firstCard = openedCards.pop(),
+            secondCard = openedCards.pop();
         openedCards = [];
         if (
             cardsSet[firstCard.dataset.card_id] !==
             cardsSet[secondCard.dataset.card_id]
         ) {
-            setTimeout(() => {
-                firstCard.classList.remove("flipped");
-                secondCard.classList.remove("flipped");
-                setTimeout(() => {
-                    firstCard.querySelector(".card_face_back").src = "#";
-                    secondCard.querySelector(".card_face_back").src = "#";
-                }, 500);
-            }, 1000);
+            noMatchFound(firstCard, secondCard);
         } else {
-            firstCard.classList.add("pair");
-            secondCard.classList.add("pair");
-            findedPairs++;
+            matchFound(firstCard, secondCard);
         }
     }
-    if (findedPairs === cardsSet.length / 2) {
-        winGame();
-    }
+    isWin();
 }
 
-function winGame() {
+function noMatchFound(firstCard, secondCard) {
     setTimeout(() => {
-        showWinWindow ("show");
+        firstCard.classList.remove("flipped");
+        secondCard.classList.remove("flipped");
+        setTimeout(() => {
+            firstCard.querySelector(".card_face_back").src = "#";
+            secondCard.querySelector(".card_face_back").src = "#";
+        }, 500);
     }, 1000);
 }
 
-function resetCardsStage () {
-        document.querySelectorAll(".game_card").forEach((card) => {
-            card.classList.remove("flipped");
-            card.classList.remove("pair");
-        });
+function matchFound(firstCard, secondCard) {
+    firstCard.classList.add("pair");
+    secondCard.classList.add("pair");
+    findedPairs++;
+}
+
+function isWin() {
+    if (findedPairs === cardsSet.length / 2) {
+        setTimeout(() => {
+            showWinWindow("show");
+        }, 1000);
+    }
+}
+
+function resetCardsStage() {
+    document.querySelectorAll(".game_card").forEach((card) => {
+        card.classList.remove("flipped");
+        card.classList.remove("pair");
+    });
 }
 
 function generateCardsSet(sizeOfSet, highestNumber) {
@@ -114,9 +127,9 @@ function generateCardsSet(sizeOfSet, highestNumber) {
         const index = Math.floor(Math.random() * (setOfPairs.length - 1));
         if (Math.random() < 0.5) {
             mixedSetOfPairs.push(setOfPairs[index]);
-         } else {
+        } else {
             mixedSetOfPairs.unshift(setOfPairs[index]);
-         }
+        }
         setOfPairs.splice(index, 1);
     }
     cardsSet = mixedSetOfPairs;
