@@ -1,6 +1,6 @@
 const doc = document;
 
-const themesDataPath = "/themesData.json";
+const themesDataPath = "./themesData.json";
 
 let themesData,
     themeIndex = 0,
@@ -119,6 +119,5 @@ function generateCardsSet(sizeOfSet, highestNumber) {
          }
         setOfPairs.splice(index, 1);
     }
-    console.log(mixedSetOfPairs);
     cardsSet = mixedSetOfPairs;
 }
