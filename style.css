@@ -197,6 +197,8 @@ body {
     border-radius: 10px;
     transition: transform 0.75s;
     transform-style: preserve-3d;
+    cursor: pointer;
+    user-select: none;
 }
 
 .card_face {

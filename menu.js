@@ -17,9 +17,9 @@ async function readThemes(path) {
 function renderMenu(data) {
     doc.querySelector(".themes").innerHTML = new Array(themesData.length)
         .fill(0)
-        .map((item, i) => {
+        .reduce((innerhtml, curr, i) => {
             const checked = i === 0 ? " checked" : "";
-            return `<input
+            return innerhtml += `<input
             type="radio"
             id="theme-${i}"
             class="nav_menu_item"
@@ -32,8 +32,7 @@ function renderMenu(data) {
             ${themesData[i].theme}
             </label>
         `;
-        })
-        .join("");
+        }, "");
     doc.querySelector(".theme_image_img").src = themesData[0].pictures[0];
 }
 
@@ -58,7 +57,7 @@ function addMenuItemsEventListeners() {
     });
     doc.querySelector("#replay").addEventListener("click", () => {
         hideWinWindow();
-        findedPairs = 0;
+        foundPairs = 0;
         resetCardsStage();
         generateCardsSet(numberOfCards, themesData[themeIndex].pictures.length - 1);
     });
