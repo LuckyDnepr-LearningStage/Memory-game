@@ -57,7 +57,7 @@ function cardFlip(card) {
 }
 
 function checkPair() {
-    if (openedCards.length % 2 == 0 && openedCards.length != 0) {
+    if (openedCards.length % 2 == 0) {
         const firstCard = openedCards.at(-1),
             secondCard = openedCards.at(-2);
         if (
