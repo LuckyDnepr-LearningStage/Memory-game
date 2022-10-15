@@ -12,32 +12,32 @@
             "./images/card-8.png",
             "./images/card-9.png",
             "./images/card-10.png"
-        ]        
+        ]
     },
     {
         "theme": "Looney Tunes",
         "pictures": [
-            "./images/cadr-tunes-1.png",
-            "./images/cadr-tunes-2.png",
-            "./images/cadr-tunes-3.png",
-            "./images/cadr-tunes-4.png",
-            "./images/cadr-tunes-5.png",
-            "./images/cadr-tunes-6.png",
-            "./images/cadr-tunes-7.png",
-            "./images/cadr-tunes-8.png"
-        ]        
+            "./images/card-tunes-1.png",
+            "./images/card-tunes-2.png",
+            "./images/card-tunes-3.png",
+            "./images/card-tunes-4.png",
+            "./images/card-tunes-5.png",
+            "./images/card-tunes-6.png",
+            "./images/card-tunes-7.png",
+            "./images/card-tunes-8.png"
+        ]
     },
     {
         "theme": "Smeshariki",
         "pictures": [
-            "./images/cadr-balls-1.png",
-            "./images/cadr-balls-2.png",
-            "./images/cadr-balls-3.png",
-            "./images/cadr-balls-4.png",
-            "./images/cadr-balls-5.png",
-            "./images/cadr-balls-6.png",
-            "./images/cadr-balls-7.png",
-            "./images/cadr-balls-8.png"
+            "./images/card-balls-1.png",
+            "./images/card-balls-2.png",
+            "./images/card-balls-3.png",
+            "./images/card-balls-4.png",
+            "./images/card-balls-5.png",
+            "./images/card-balls-6.png",
+            "./images/card-balls-7.png",
+            "./images/card-balls-8.png"
         ]
     }
 ]

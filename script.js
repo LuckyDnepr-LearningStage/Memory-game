@@ -26,12 +26,14 @@ function gameStart() {
 
 function renderGameField(numberOfCards) {
     const gameField = doc.querySelector(".game_field");
+    gameField.classList.remove("field3x2");
+    gameField.classList.remove("field4x3");
     switch (numberOfCards) {
         case 6:
-            gameField.setAttribute("style", "--cols: 3; --rows: 2");
+            gameField.classList.add('field3x2');
             break;
         case 12:
-            gameField.setAttribute("style", "--cols: 4; --rows: 3");
+            gameField.classList.add('field4x3');
             break;
         default:
             break;
@@ -57,7 +59,7 @@ function cardFlip(card) {
 }
 
 function checkPair() {
-    if (openedCards.length % 2 == 0) {
+    if (openedCards.length === 2) {
         const firstCard = openedCards.at(-1),
             secondCard = openedCards.at(-2);
         if (

@@ -178,8 +178,16 @@ body {
     width: 75%;
     margin: auto;
     gap: 5px;
-    grid-template-columns: repeat(var(--cols), 1fr);
-    grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.game_field.field3x2 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.game_field.field4x3 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .game_card {
@@ -304,9 +312,16 @@ body {
     }
     .game_field {
         width: auto;
-        grid-template-columns: repeat(var(--cols), calc(90vw / var(--cols)));
-        grid-template-rows: repeat(var(--rows), 1fr);
     }
+    .game_field.field3x2 {
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .game_field.field4x3 {
+        grid-template-columns: repeat(4, 22.5vw);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
     .modal {
         width: 80%;
         left: 10%;
@@ -329,8 +344,14 @@ body {
     }
     .game_field {
         width: auto;
-        grid-template-columns: repeat(var(--cols), calc(90vw / var(--cols)));
-        grid-template-rows: repeat(var(--rows), 1fr);
+    }
+    .game_field.field3x2 {
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .game_field.field4x3 {
+        grid-template-columns: repeat(4, 22.5vw);
+        grid-template-rows: repeat(3, 1fr);
     }
 }
 
@@ -378,10 +399,18 @@ body {
     .game_field {
         width: auto;
         margin-top: 2em;
-        grid-template-columns: repeat(var(--cols), calc(90vh / var(--cols)));
-        grid-template-rows: repeat(var(--rows), 1fr);
     }
+    .game_field.field3x2 {
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(2, 40vh);
+    }
+    .game_field.field4x3 {
+        grid-template-columns: repeat(4, 22.5vw);
+        grid-template-rows: repeat(3, 28vh);
+    }
+
     .game_card {
+        width: auto;
         margin: 0.1em;
     }
     .modal {
