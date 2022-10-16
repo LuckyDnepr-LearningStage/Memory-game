@@ -18,7 +18,7 @@ body {
     width: 100vw;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.733);
-    z-index: 1000;
+    z-index: 10;
 }
 
 .wrapper {
@@ -258,7 +258,7 @@ body {
     margin: auto;
     top: 35%;
     left: 37.5%;
-    z-index: 1500;
+    z-index: 15;
 }
 
 .win_text {
