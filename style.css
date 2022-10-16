@@ -263,6 +263,8 @@ body {
 }
 
 .win_text {
+    font-size: 24px;
+    font-weight: 600;
     margin: 0.5em 0;
     color: white;
 }
