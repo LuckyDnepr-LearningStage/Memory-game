@@ -82,13 +82,14 @@ body {
     align-items: center;
 }
 
-.nav_menu input[type="radio"] {
+.nav_menu_item {
     appearance: none;
     position: fixed;
     width: 0;
 }
 
-.nav_menu label {
+.nav_menu_item_label {
+    width: 30%;
     display: inline-block;
     background-color: rgb(221, 221, 221);
     padding: 10px 20px;
@@ -102,19 +103,15 @@ body {
     transition: all linear 0.2s;
 }
 
-.nav_menu label:hover {
+.nav_menu_item_label:hover {
     box-shadow: 5px 5px 10px rgb(70, 130, 180);
 }
 
-.fieldsize label {
-    width: 30%;
-}
-
-.themes label {
+.themes .nav_menu_item_label {
     width: 70%;
 }
 
-.nav_menu input[type="radio"]:checked + label {
+.nav_menu_item:checked + label {
     background-color: rgba(70, 131, 180, 0.302);
     border-color: rgb(70, 130, 180);
     text-shadow: 3px 3px 3px rgb(255, 239, 213);
@@ -307,7 +304,7 @@ body {
     .wrapper {
         width: 95%;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         padding: 15px 5px;
         font-size: 10px;
     }
@@ -334,7 +331,7 @@ body {
     .wrapper {
         width: 95%;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         padding: 30px 5px;
         font-size: x-large;
         font-size: 16px;
@@ -364,7 +361,7 @@ body {
     .main {
         height: 100%;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         font-size: 10px;
     }
     .nav {
@@ -379,10 +376,10 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
     }
-    .fieldsize label {
+    .fieldsize .nav_menu_item_label {
         width: 60%;
     }
-    .themes label {
+    .themes .nav_menu_item_label {
         width: 60%;
     }
     .theme_image {
@@ -391,7 +388,7 @@ body {
     .nav_menu {
         margin: 0.2em;
     }
-    .nav_menu label {
+    .nav_menu_item_label {
         margin: 0.2em;
     }
     .start-game {
